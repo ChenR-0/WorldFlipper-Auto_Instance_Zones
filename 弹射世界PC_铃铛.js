@@ -15,11 +15,11 @@ var y = device.height;
 var j = 0;
 var isSettling;
 //铃铛坐标46，34.5
-var LD_x = x * 0.065;
-var LD_y = y * 0.027;
+var LD_x = x * 0.065; //35
+var LD_y = y * 0.027; //26
 //点击参加 
-var CJ_x = x * 0.819;
-var CJ_y = y * 0.836;
+var CJ_x = x * 0.518; //280
+var CJ_y = y * 0.104; //100
 //失败按钮点击
 var FailCJ_x = x * 0.597; //
 var FailCJ_y = y * 0.633; //
@@ -151,17 +151,17 @@ while (1) {
                 sleep(3000);
                 continue;
             }
-            else if (colors.isSimilar(LevelUp, colors.parseColor("#fff7f7f7"), 7)) {//升级了
-                click(Selltement_x, Selltement_y);
-                toast("Level up");
-                sleep(1000);
-                continue;
-            }
             else if (colors.isSimilar(TooLong, colors.parseColor("#ff29c2b5"))) {
                 click(FailCJ_x, FailCJ_y);
                 toast("太久了,结算结束 || 日期改变");
                 sleep(3000);
                 break;
+            }
+            else if (colors.isSimilar(LevelUp, colors.parseColor("#fff7f7f7"), 7)) {//升级了
+                click(Selltement_x, Selltement_y);
+                toast("Level up");
+                sleep(1000);
+                continue;
             }
         }
     }
