@@ -43,8 +43,8 @@ var ZDJN_y = y * 0.211;
 var Date_x = x * 0.597; //322  (540)
 var Date_y = y * 0.633; //607  (960)
 //主界面判断_底部
-var Login_x = x * 0.420;
-var Login_y = y * 0.976;
+var Login_x = x * 0.420; //227
+var Login_y = y * 0.976; //937
 //结算中
 var Selltement_x = x * 0.416;
 var Selltement_y = y * 0.937;
@@ -64,12 +64,13 @@ var activity_y = y * 0.914; //
 
 // 颜色
 var white = "#ffffffff"; //白
+var LD_gray = "#ffdcdcdc" //铃铛灰
 var cj_green = "#ff29c2b5"; //参加绿
 var zb_gray = "#ffe7e3e7"; // 准备灰
 var js_green = "#ffdedbde" //结算绿
 var js_blue = "#ff002c4a" //获得角色蓝
 var sj_white = "#fff7f7f7" //升级白
-var zy_color = "#ffded3ce" //主页判断色
+var zy_color = "#ffded3ce" //登录界面判断色
 var xs_orange = "#ffff9f1c" //新手橙
 
 while (1) {
@@ -199,9 +200,9 @@ while (1) {
         sleep(10000);
     }
     else if (colors.isSimilar(images.pixel(img, Login_x, Login_y), colors.parseColor(zy_color), 8)) {//检测是否到登录界面
-        click(Login_x, Login_y);
+        click(activity_x, activity_y);
         toast("点击开始进入游戏");
-        sleep(10000);
+        sleep(20000);
         //不继续上把副本
         var Continue_x = x * 0.370;//200
         var Continue_y = y * 0.633;//
@@ -214,7 +215,8 @@ while (1) {
                 sleep(1000);//进入游戏大概率卡顿，导致画面出来，却无法点击，等待1秒以确保点上按钮
                 click(Continue_x, Continue_y);
             }
-            else if (colors.isSimilar(color, colors.parseColor(js_green), 8)) {//不需要领取登录奖励 / 领取完登录奖励
+            else if (colors.isSimilar(color, colors.parseColor(LD_gray), 4) || colors.isSimilar(color, colors.parseColor(white), 4)) {//不需要领取登录奖励 / 领取完登录奖励
+                // 有公告e0e0e0
                 break;
             }
             else {
